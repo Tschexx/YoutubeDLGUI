@@ -5,7 +5,7 @@ from ttkthemes import ThemedTk
 import tkinter as tk
 import threading
 import os
-
+import customtkinter
 filename = os.getcwd()
 progress = ""
 
@@ -66,9 +66,10 @@ def started():
     error.pack()
 
 
+app = customtkinter.CTk()
 root = ThemedTk(theme="arc")
-root.title("Youtube-DL")
-root.geometry("300x220")
+app.title("Youtube-DL")
+app.geometry("300x220")
 root.minsize(300, 220)
 root.maxsize(300, 220)
 title = ttk.Label(root, text="Youtube-DL GUI")
@@ -86,10 +87,10 @@ folder_path = tk.StringVar()
 folder_path.set(filename)
 br = ttk.Label(root, textvariable=folder_path)
 br.pack()
-br2 = ttk.Button(text="Browse", command=browse_button)
+br2 = customtkinter.CTkButton(app, text="Browse", command=browse_button)
 br2.pack()
 msg = ttk.Label(root, text="")
 error = ttk.Label(root, text="")
-btn = ttk.Button(root, text="Download", command=threadmanager)
+btn = customtkinter.CTkButton(app, text="Download", command=threadmanager)
 btn.pack()
-root.mainloop()
+app.mainloop()
